@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>tail-f</title>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var socket = io();
+            console.log("hello javascript", socket)
+            // socket.on('connected', function () {
+            //     socket.send('user has connected!');
+            // });
+
+            socket.on('my response', function (msg) {
+                $('#log').append('<p>' + msg.data + '</p>');
+            });
+            // $('form#emit').submit(function (event) {
+            //     socket.emit('my event', { data: $('#emit_data').val() });
+            //     return false;
+            // });
+            // $('form#broadcast').submit(function (event) {
+            //     socket.emit('my broadcast event', { data: $('#broadcast_data').val() });
+            //     return false;
+            // });
+            // socket.emit('logs', function(msg) {
+            //     $('#messages').append('<li>'+msg.data+'</li>');
+            //     console.log('Recived Message');
+            // });
+        });     
+    </script>
+    <h3>Logs File</h3>
+    <ul id="log"></ul>
+    <ul id="messages"></ul>
+
+</body>
+
+</html>
